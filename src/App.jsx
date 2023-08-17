@@ -10,7 +10,7 @@ function App() {
     const user = {name, email};
     console.log(user);
 
-    fetch('http://localhost:3000/user', {
+    fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -18,7 +18,13 @@ function App() {
       body: JSON.stringify(user)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data =>{
+      console.log(data)
+      if(data.insertedId){
+        alert('User info is added');
+        form.reset();
+      }
+    })
   }
   return (
     <>
